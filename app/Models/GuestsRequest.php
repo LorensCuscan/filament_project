@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class GuestsRequest extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'guest_id',
+        'name',
+        'tel',
+        'email',
+        'hotel_id',
+        'room_id'
+    ];
 }

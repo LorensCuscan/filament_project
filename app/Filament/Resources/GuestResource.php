@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\GuestsResource\Pages;
-use App\Filament\Resources\GuestsResource\RelationManagers;
-use App\Models\Guests;
+use App\Filament\Resources\GuestResource\Pages;
+use App\Filament\Resources\GuestResource\RelationManagers;
+use App\Models\Guest;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class GuestsResource extends Resource
+class GuestResource extends Resource
 {
-    protected static ?string $model = Guests::class;
+    protected static ?string $model = Guest::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
@@ -55,8 +55,8 @@ class GuestsResource extends Resource
     {
         return [
             'index' => Pages\ListGuests::route('/'),
-            'create' => Pages\CreateGuests::route('/create'),
-            'edit' => Pages\EditGuests::route('/{record}/edit'),
+            'create' => Pages\CreateGuest::route('/create'),
+            'edit' => Pages\EditGuest::route('/{record}/edit'),
         ];
     }    
 }

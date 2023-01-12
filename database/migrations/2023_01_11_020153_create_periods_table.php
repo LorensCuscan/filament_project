@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('periods', function (Blueprint $table) {
             $table->id();
+            $table->string("date_from");
+            $table->string("date_to");
+            $table->foreignId("guest_id");
+            $table->foreignId("hotel_id");
+            $table->foreignId("room_id");
             $table->timestamps();
         });
     }

@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('guests', function (Blueprint $table) {
             $table->id();
+            $table->string("name");
+            $table->string("tel");
+            $table->string("email");
+            $table->foreignId("hotel_id");
+            $table->foreignId("room_id");
             $table->timestamps();
         });
     }

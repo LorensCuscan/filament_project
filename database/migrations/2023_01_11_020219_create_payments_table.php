@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->string("desc");
+            $table->foreignId("guest_id");
+            $table->foreignId("hotel_id");
+            $table->foreignId("room_id");
             $table->timestamps();
         });
     }

@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
+            $table->string("name", 100);
+            $table->string("service", 100);
+            $table->string("guests", 100);
+            $table->string("class", 100);
+            $table->string("floor", 100);
+            $table->string("price", 100);
+            $table->foreignId("hotel_id")->constrained();
             $table->timestamps();
         });
     }

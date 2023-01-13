@@ -27,7 +27,38 @@ class RoomResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Grid::make()
+                ->schema([
+                    Forms\Components\Select::make('hotels_id')
+                    ->relationship('hotel', 'name')
+                    ->label('Nome do hotel')
+                    ->required()
+                    ->columnspan(2),
+                    Forms\Components\TextInput::make('name')
+                    ->label('Nome do quarto')
+                    ->required()
+                    ->columnspan(2),
+                    Forms\Components\TextInput::make('service')
+                    ->label('Serviço de quarto utilizado?')
+                    ->required()
+                    ->columnspan(2),
+                    Forms\Components\TextInput::make('guests')
+                    ->label('Hóspedes')
+                    ->required()
+                    ->columnspan(2),
+                    Forms\Components\TextInput::make('class')
+                    ->label('Classificação do quarto')
+                    ->required()
+                    ->columnspan(2),
+                    Forms\Components\TextInput::make('floor')
+                    ->label('Andar')
+                    ->required()
+                    ->columnspan(2),
+                    Forms\Components\TextInput::make('price')
+                    ->label('Preço')
+                    ->required()
+                    ->columnspan(2),
+                         ])
             ]);
     }
 

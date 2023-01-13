@@ -12,6 +12,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\Tabs;
 
 class GuestResource extends Resource
 {
@@ -27,7 +28,39 @@ class GuestResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Tabs::make('guests')
+                    ->tabs([
+                        Tabs\Tab::make('Dados de registro')
+                            ->schema([
+                                Forms\Components\TextInput::make('name')
+                                    ->label('Nome')
+                                    ->required()
+                                    ->columns(1),
+                                Forms\Components\TextInput::make('tel')
+                                    ->label('Telefone para contato')
+                                    ->required()
+                                    ->columns(1),
+                                Forms\Components\TextInput::make('email')
+                                    ->label('Email')
+                                    ->required()
+                                    ->columns(1),
+                            ]),
+                        Tabs\Tab::make('Dados de hospedagem')                       
+                            ->schema([
+                                Forms\Components\Select::make('hotels_id')
+                                    ->relationship('hotel', 'name')
+                                    ->label('Nome do hotel')
+                                    ->required()
+                                    ->columns(1),
+                                Forms\Components\Select::make('rooms_id')
+                                    ->relationship('room', 'name')
+                                    ->label('Nome do quarto')
+                                    ->required()
+                                    ->columns(1),
+                                    
+                            ]),
+
+                        ]),
             ]);
     }
 

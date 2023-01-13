@@ -19,4 +19,14 @@ class Room extends Model
         'price',
         'hotel_id'
     ];
+
+    public function room_id(){
+        return $this->hasMany(Guest::class);
+        return $this->hasMany(Payment::class);
+        return $this->hasMany(Period::class);
+    }
+    public function hotel()
+    {
+        return $this->belongsTo(Hotel::class);
+    }
 }

@@ -17,4 +17,17 @@ class Guest extends Model
         'hotel_id',
         'room_id'
     ];
+
+    public function guest_id(){
+        return $this->hasMany(Payment::class);
+        return $this->hasMany(Period::class);
+    }
+    public function hotel()
+    {
+        return $this->belongsTo(Hotel::class);
+    }
+    public function room()
+    {
+        return $this->belongsTo(Room::class);
+    }
 }

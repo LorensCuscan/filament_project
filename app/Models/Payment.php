@@ -16,4 +16,16 @@ class Payment extends Model
         'hotel_id',
         'room_id'
     ];
+    public function guest()
+    {
+        return $this->belongsTo(Guest::class);
+    }
+    public function hotel()
+    {
+        return $this->belongsTo(Hotel::class);
+    }
+    public function room()
+    {
+        return $this->belongsTo(Room::class);
+    }
 }

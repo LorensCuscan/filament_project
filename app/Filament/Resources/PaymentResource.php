@@ -12,6 +12,8 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Tabs;
 
 class PaymentResource extends Resource
 {
@@ -27,8 +29,21 @@ class PaymentResource extends Resource
     {
         return $form
             ->schema([
-                //
-            ]);
+                Section::make('Dados de pagamento')
+                ->schema([
+                    Forms\Components\TextInput::make('Forma de pagamento')
+                    ->datalist([
+                        'Débito',
+                        'Credito',
+                        'Pix',
+                        'Cheque'
+                              ])                  
+                        ])               
+                            
+                    ]);
+                    
+                    
+                    
     }
 
     public static function table(Table $table): Table
@@ -62,5 +77,5 @@ class PaymentResource extends Resource
             'create' => Pages\CreatePayment::route('/create'),
             'edit' => Pages\EditPayment::route('/{record}/edit'),
         ];
-    }    
+    }
 }

@@ -12,6 +12,10 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\TimePicker;
+use Filament\Forms\Components\Tabs;
 
 class PeriodResource extends Resource
 {
@@ -27,7 +31,29 @@ class PeriodResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Tabs::make('Dados de estadia')
+                    ->tabs([
+                        Tabs\Tab::make('Periodo de estadia')
+                            ->schema([
+                                DatePicker::make('date_from')
+                                ->label('De:')
+                                ->required()
+                                ->columns(1),
+                                DatePicker::make('date_to')
+                                ->label('Até:')
+                                ->required()
+                                ->columns(1),
+                                Forms\Components\Select::make('hotels_id')
+                                ->relationship('hotel', 'name')
+                                ->label('Nome do hotel')
+                                ->required()
+                                ->columns(2),
+                                Forms\Components\TextInput::make('name')
+                                ->label('Nome do quarto')
+                                ->required()
+                                ->columns(2),
+                            ]),                          
+                        ]),
             ]);
     }
 

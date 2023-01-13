@@ -12,6 +12,8 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\FileUpload;
 
 class HotelResource extends Resource
 {
@@ -27,15 +29,30 @@ class HotelResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Grid::make()
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                        ->label('Nome do hotel')
+                        ->required()
+                        ->columnspan(2),
+                        Forms\Components\TextInput::make('cnpj')
+                        ->label('CNPJ da empresa')
+                        ->required()
+                        ->columnspan(2),                       
+                             ])
             ]);
+            
     }
+    
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                ->label('Nome do hotel'),
+                Tables\Columns\TextColumn::make('cnpj') 
+                ->label('CNPJ da empresa'),
             ])
             ->filters([
                 //

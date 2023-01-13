@@ -17,7 +17,11 @@ class GuestResource extends Resource
 {
     protected static ?string $model = Guest::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationLabel = 'Hóspedes';
+
+    protected static ?string $modelLabel = 'Hóspedes';
+
+    protected static ?string $navigationIcon = 'heroicon-o-identification';
 
     public static function form(Form $form): Form
     {

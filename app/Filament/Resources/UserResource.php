@@ -27,7 +27,17 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Grid::make()
+                ->schema([
+                    Forms\Components\Select::make('users_id')
+                    ->label('Nome do hotel')
+                    ->required()
+                    ->columnspan(2),
+                    Forms\Components\TextInput::make('name')
+                    ->label('Nome do quarto')
+                    ->required()
+                    ->columnspan(2),
+                         ])
             ]);
     }
 

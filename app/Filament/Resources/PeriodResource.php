@@ -43,12 +43,18 @@ class PeriodResource extends Resource
                                 ->label('Até:')
                                 ->required()
                                 ->columns(1),
-                                Forms\Components\Select::make('hotels_id')
+                                Forms\Components\Select::make('guest_id')
+                                ->relationship('guest', 'name')
+                                ->label('Hóspedes')
+                                ->required()
+                                ->columns(1),
+                                Forms\Components\Select::make('hotel_name')
                                 ->relationship('hotel', 'name')
                                 ->label('Nome do hotel')
                                 ->required()
                                 ->columns(2),
-                                Forms\Components\TextInput::make('name')
+                                Forms\Components\Select::make('room_id')
+                                ->relationship('room', 'name')
                                 ->label('Nome do quarto')
                                 ->required()
                                 ->columns(2),
@@ -61,7 +67,12 @@ class PeriodResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('date_from')
+                ->label('De'),
+                Tables\Columns\TextColumn::make('date_to') 
+                ->label('Até:'),
+                Tables\Columns\TextColumn::make('hotel.name')
+                ->label('Nome do hotel')
             ])
             ->filters([
                 //

@@ -47,17 +47,16 @@ class GuestResource extends Resource
                             ]),
                         Tabs\Tab::make('Dados de hospedagem')                       
                             ->schema([
-                                Forms\Components\Select::make('hotels_id')
+                                Forms\Components\Select::make('hotel_name')
                                     ->relationship('hotel', 'name')
                                     ->label('Nome do hotel')
                                     ->required()
                                     ->columns(1),
-                                Forms\Components\Select::make('rooms_id')
+                                Forms\Components\Select::make('room_name')
                                     ->relationship('room', 'name')
                                     ->label('Nome do quarto')
                                     ->required()
-                                    ->columns(1),
-                                    
+                                    ->columns(1),                                    
                             ]),
 
                         ]),
@@ -68,7 +67,14 @@ class GuestResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                ->label('Nome do hóspede'),
+                Tables\Columns\TextColumn::make('tel') 
+                ->label('Telefone para contato'),
+                Tables\Columns\TextColumn::make('hotel.name')
+                ->label('Hotel:'),
+                Tables\Columns\TextColumn::make('room.name') 
+                ->label('Quarto:'),
             ])
             ->filters([
                 //

@@ -14,6 +14,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Tabs;
+use Illuminate\Support\Facades\Schema;
+use App\Models\Guest;
+use Filament\Forms\Components\Card;
 
 class PaymentResource extends Resource
 {
@@ -29,28 +32,46 @@ class PaymentResource extends Resource
     {
         return $form
             ->schema([
-                Section::make('Dados de pagamento')
-                ->schema([
-                    Forms\Components\TextInput::make('Forma de pagamento')
-                    ->datalist([
-                        'Débito',
-                        'Credito',
-                        'Pix',
-                        'Cheque'
-                              ])                  
-                        ])               
-                            
-                    ]);
+                Card::make()
+                    ->schema([
+                        Forms\Components\TextInput::make('desc')
+                            ->label('Descrição do pagamento')
+                            ->required()
+                            ->columns(1),
+                        Forms\Components\Select::make('guest_name')
+                            ->relationship('guest', 'name')
+                            ->label('Hóspedes')
+                            ->required()
+                            ->columns(1),
+                        Forms\Components\Select::make('hotel_id')
+                            ->relationship('hotel', 'name')
+                            ->label('Nome do hotel')
+                            ->required()
+                            ->columns(1),
+                        Forms\Components\Select::make('room_id')
+                            ->relationship('room', 'name')
+                            ->label('Nome do quarto')
+                            ->required()
+                            ->columns(1),
+                    ]),
+            ]);
+            
                     
-                    
-                    
-    }
+        
+        
+           
+}
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('desc')
+                ->label('Forma de pagamento'),
+                Tables\Columns\TextColumn::make('guest.name') 
+                ->label('Até:'),
+                Tables\Columns\TextColumn::make('hotel.name')
+                ->label('Nome do hotel')
             ])
             ->filters([
                 //

@@ -1,8 +1,8 @@
 <?php
 
-use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
-
+use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 return [
+
     'shield_resource' => [
         'should_register_navigation' => true,
         'slug' => 'shield/roles',
@@ -44,6 +44,7 @@ return [
             'delete_any',
             'force_delete',
             'force_delete_any',
+        
         ],
 
         'page' => 'page',

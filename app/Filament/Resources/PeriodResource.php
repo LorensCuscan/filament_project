@@ -48,7 +48,7 @@ class PeriodResource extends Resource
                                 ->label('Hóspedes')
                                 ->required()
                                 ->columns(1),
-                                Forms\Components\Select::make('hotel_name')
+                                Forms\Components\Select::make('hotel_id')
                                 ->relationship('hotel', 'name')
                                 ->label('Nome do hotel')
                                 ->required()

@@ -4,9 +4,13 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Spatie\Permission\PermissionRegistrar;
+use Spatie\Permission\Traits\HasRoles;
+use HasFilamentShield;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class CreatePermissionTables extends Migration
 {
+    
     /**
      * Run the migrations.
      *
@@ -14,6 +18,7 @@ class CreatePermissionTables extends Migration
      */
     public function up()
     {
+        
         $tableNames = config('permission.table_names');
         $columnNames = config('permission.column_names');
         $teams = config('permission.teams');

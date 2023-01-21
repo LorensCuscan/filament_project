@@ -47,12 +47,12 @@ class GuestResource extends Resource
                             ]),
                         Tabs\Tab::make('Dados de hospedagem')                       
                             ->schema([
-                                Forms\Components\Select::make('hotel_name')
+                                Forms\Components\Select::make('hotel_id')
                                     ->relationship('hotel', 'name')
                                     ->label('Nome do hotel')
                                     ->required()
                                     ->columns(1),
-                                Forms\Components\Select::make('room_name')
+                                Forms\Components\Select::make('room_id')
                                     ->relationship('room', 'name')
                                     ->label('Nome do quarto')
                                     ->required()

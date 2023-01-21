@@ -1,5 +1,7 @@
 <?php
 
+
+
 return [
 
     /*
@@ -63,6 +65,8 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+            'Spatie\Permission\Models\Role' => 'App\Policies\RolePolicy'
+            
         ],
 
         // 'users' => [

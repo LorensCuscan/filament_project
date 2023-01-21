@@ -38,7 +38,7 @@ class PaymentResource extends Resource
                             ->label('Descrição do pagamento')
                             ->required()
                             ->columns(1),
-                        Forms\Components\Select::make('guest_name')
+                        Forms\Components\Select::make('guest_id')
                             ->relationship('guest', 'name')
                             ->label('Hóspedes')
                             ->required()
